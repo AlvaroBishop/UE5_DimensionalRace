@@ -17,20 +17,24 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, Category="Period Parameters")
-	float Amplitude = 0.25f;
+	float Amplitude = 1000.f;
 
 	UPROPERTY(EditAnywhere, Category="Period Parameters")
-	float TimeConstant = 5.f;
+	float TimeConstant = 2.f;
 	
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly)
 	float RunningTime;
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* ObstacleMesh;
+
+	UFUNCTION(BlueprintCallable)
+	float TransformedSin(float RT);
 
 	
 
